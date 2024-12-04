@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "136486678903",
+    "project_id": "mobileproject-73908",
+    "storage_bucket": "mobileproject-73908.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136486678903:android:afbe1aa2a61c0e8de6f172",
+        "android_client_info": {
+          "package_name": "com.eilco.mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXSjzfDsaooabmiLOra8vw2Q21t7xaq3Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
