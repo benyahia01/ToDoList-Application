@@ -7,6 +7,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import android.content.Intent
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,54 +22,60 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Initialisation de Firebase Auth
+        // Initialisation de FirebaseAuth
         auth = FirebaseAuth.getInstance()
 
-        // Récupérer les vues
+        // Récupérer les références des vues
         emailEditText = findViewById(R.id.emailEditText)
         passwordEditText = findViewById(R.id.passwordEditText)
         loginButton = findViewById(R.id.loginButton)
         signUpTextView = findViewById(R.id.signUpTextView)
-        forgotPasswordTextView = findViewById(R.id.forgotPasswordTextView)
 
-        // Action lors du clic sur le bouton de connexion
+        // Gestion du bouton de connexion
         loginButton.setOnClickListener {
-            val email = emailEditText.text.toString()
-            val password = passwordEditText.text.toString()
+            val email = emailEditText.text.toString().trim()
+            val password = passwordEditText.text.toString().trim()
 
             if (email.isNotEmpty() && password.isNotEmpty()) {
-                loginUser(email, password)
+                if (isValidEmail(email)) {
+                    loginUser(email, password)
+                } else {
+                    Toast.makeText(this, "Veuillez entrer un email valide", Toast.LENGTH_SHORT).show()
+                }
             } else {
                 Toast.makeText(this, "Veuillez entrer votre email et mot de passe", Toast.LENGTH_SHORT).show()
             }
         }
 
-        // Action pour gérer l'inscription (facultatif)
+        // Redirection vers la page d'inscription
         signUpTextView.setOnClickListener {
-            // Rediriger vers l'écran d'inscription
-            // Vous pouvez implémenter un Intent pour une activité d'inscription si nécessaire
-            Toast.makeText(this, "Inscription", Toast.LENGTH_SHORT).show()
-        }
-
-        // Action pour gérer l'oubli du mot de passe (facultatif)
-        forgotPasswordTextView.setOnClickListener {
-            // Rediriger vers la réinitialisation du mot de passe
-            Toast.makeText(this, "Réinitialisation du mot de passe", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
         }
     }
 
-    // Fonction de connexion Firebase
+    // Fonction de connexion de l'utilisateur
     private fun loginUser(email: String, password: String) {
+        // Afficher un toast ou une ProgressBar pour signaler la connexion en cours
+        Toast.makeText(this, "Connexion en cours...", Toast.LENGTH_SHORT).show()
+
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Connexion réussie, afficher un message de succès
                     Toast.makeText(this, "Connexion réussie", Toast.LENGTH_SHORT).show()
-                    // Vous pouvez rediriger l'utilisateur vers une autre activité si nécessaire
+                    // Rediriger vers une autre activité après la connexion réussie (par exemple, une page d'accueil)
+                    val intent = Intent(this, DashBoard::class.java) // Créer la HomeActivity
+                    startActivity(intent)
+                    finish()  // Ferme la MainActivity pour éviter que l'utilisateur y revienne
                 } else {
-                    // En cas d'échec de la connexion, afficher un message d'erreur
-                    Toast.makeText(this, "Échec de l'authentification", Toast.LENGTH_SHORT).show()
+                    // Gérer l'échec de la connexion (mot de passe ou email incorrect)
+                    Toast.makeText(this, "Échec de l'authentification : ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
+    }
+
+    // Vérifier la validité de l'email
+    private fun isValidEmail(email: String): Boolean {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 }

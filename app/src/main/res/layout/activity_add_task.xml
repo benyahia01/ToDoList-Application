@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EAF1F1"
+    tools:context=".AddTask">
+
+    <!-- Image at the top -->
+    <ImageView
+        android:id="@+id/designImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/add"
+        android:contentDescription="Design Image"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp" />
+
+    <!-- Title Input -->
+    <EditText
+        android:id="@+id/taskTitleEditText"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:hint="Enter task title (required)"
+        android:background="@drawable/rounded_edittext_background"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@+id/designImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Description Input -->
+    <EditText
+        android:id="@+id/taskDescriptionEditText"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:hint="Enter task description (optional)"
+        android:background="@drawable/rounded_edittext_background"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:inputType="textMultiLine"
+        android:gravity="top"
+        app:layout_constraintTop_toBottomOf="@+id/taskTitleEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Save Task Button -->
+    <Button
+        android:id="@+id/saveTaskButton"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:text="Save Task"
+        android:backgroundTint="#5DC2C2"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/taskDescriptionEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Cancel Button -->
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:text="Cancel"
+        android:backgroundTint="#D9534F"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/saveTaskButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
