@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -65,116 +66,27 @@
             android:layout_marginTop="24dp"
             android:layout_marginStart="16dp" />
 
-        <!-- Clock Image -->
-        <ImageView
-            android:id="@+id/clockImage"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:src="@drawable/clock2"
-            android:contentDescription="Clock Image" />
+        <!-- Add Task Button -->
+        <Button
+            android:id="@+id/addTaskButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ajouter une tâche"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#5DC2C2"
+            android:layout_gravity="end"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp" />
 
-        <!-- Task Card -->
-        <RelativeLayout
+        <!-- Container for Dynamic Tasks -->
+        <LinearLayout
+            android:id="@+id/taskContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:layout_marginTop="16dp">
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:padding="8dp">
+        </LinearLayout>
 
-            <!-- Daily Task Title -->
-            <TextView
-                android:id="@+id/dailyTaskTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Daily Tasks"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:layout_alignParentStart="true" />
-
-            <!-- Add Task Button -->
-            <Button
-                android:id="@+id/addTaskButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/ic_add"
-                android:contentDescription="Add Task"
-                app:tint="#5DC2C2" />
-
-            <!-- Task Items -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@id/dailyTaskTitle"
-                android:layout_marginTop="16dp">
-
-                <!-- Example Task Item -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="8dp">
-
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="#5AC8FA" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Learn Programming by 12PM"
-                        android:textColor="#000000"
-                        android:layout_marginStart="8dp"
-                        android:layout_gravity="center_vertical" />
-                </LinearLayout>
-
-                <!-- Add more tasks as needed -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="8dp">
-
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="#5AC8FA" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Learn how to cook by 1PM"
-                        android:textColor="#000000"
-                        android:layout_marginStart="8dp"
-                        android:layout_gravity="center_vertical" />
-                </LinearLayout>
-
-                <!-- Example Task -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="8dp">
-
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:buttonTint="#5AC8FA" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Have lunch at 4PM"
-                        android:textColor="#000000"
-                        android:layout_marginStart="8dp"
-                        android:layout_gravity="center_vertical" />
-                </LinearLayout>
-            </LinearLayout>
-        </RelativeLayout>
     </LinearLayout>
 </ScrollView>

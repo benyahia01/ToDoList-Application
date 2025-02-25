@@ -42,6 +42,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".EditTask"
+            android:label="Modifier la tâche">
+            <!-- Facultatif : Ajoute des propriétés spécifiques si nécessaire -->
+        </activity>
 
     </application>
 
